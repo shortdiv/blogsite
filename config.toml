@@ -5,19 +5,23 @@ theme = "pickles"
 disableRSS = false
 rssLimit = 10
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
 [params]
-paginate = 5
-twitter = "shortdiv"
-linkedin = "shortdiv"
-feed="index.xml"
-favicon = "/favicon/favicon.ico"
+  paginate = 5
+  twitter = "shortdiv"
+  linkedin = "shortdiv"
+  feed="index.xml"
+  favicon = "/favicon/favicon.ico"
 
 [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
+  name = "Home"
+  url = "/"
+  weight = 1
 
 [[menu.main]]
-    name = "About"
-    url = "/about"
-    weight = 2
+  name = "About"
+  url = "/about"
+  weight = 2
