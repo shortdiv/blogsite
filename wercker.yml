@@ -3,8 +3,8 @@ build:
   steps:
     - arjen/hugo-build:
         version: "0.17"
-        theme: pickles
-        flags: --buildDrafts=false
+        theme: hugo_theme_pickles
+        flags: --buildDrafts=true
 deploy:
     steps:
         - add-to-known_hosts:

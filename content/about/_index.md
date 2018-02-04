@@ -1,6 +1,6 @@
 ---
 title: "About"
-draft: true
+draft: false
 ---
 
 Hello, my name is Divya. I'm a developer with a passion for the web and all
