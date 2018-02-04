@@ -2,8 +2,6 @@ baseURL = "http://shortdiv.com/"
 languageCode = "en-us"
 title = "<shortdiv />"
 theme = "pickles"
-disableRSS = false
-rssLimit = 10
 
 [taxonomies]
   category = "categories"
