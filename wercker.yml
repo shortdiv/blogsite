@@ -20,11 +20,11 @@ deploy:
             overwrite: true
         - script:
             name: remove old files
-            code: ssh -i $PRIVATEKEY_PATH -l root -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $HOSTNAME rm -rf /var/www/blog/*
+            code: ssh -i $PRIVATEKEY_PATH -l root -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $HOSTNAME rm -rf /var/www/mywebsite/*
         - script:
             name: transfer blog
             code: |
-                scp -r -i $PRIVATEKEY_PATH public/* root@$HOSTNAME:/var/www/blog
+                scp -r -i $PRIVATEKEY_PATH public/* root@$HOSTNAME:/var/www/mywebsite
                 ssh -i $PRIVATEKEY_PATH -l root -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $HOSTNAME chown -R www-data:www-data /var/www/
         - script:
             name: restart nginx
