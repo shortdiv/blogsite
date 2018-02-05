@@ -2,9 +2,14 @@ box: debian
 build:
   steps:
     - script:
-        name: initialize git submodules
+        name: install git
         code: |
-            git submodule update --init --recursive
+            apt-get update
+            apt-get install git -y
+        - script:
+            name: initialize git submodules
+            code: |
+                git submodule update --init --recursive
     - arjen/hugo-build:
         version: "0.17"
         theme: pickles
