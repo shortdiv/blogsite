@@ -7,7 +7,6 @@ date: 2018-02-18T15:12:39-06:00
 draft: false
 ---
 
-## Ode to Vue
 A couple of months ago, I made the switch from React to Vue. I had been playing around with Vue for a bit before making the switch and was impressed by how lightweight, and versatile Vue was. Compared to my initial experience learning React (👋 JSX), picking up Vue felt like a breeze. Not only is Vue very well documented, it is also very straighforward and doesn't require a lot of initial set up to get started. If you've been considering using Vue in your next project, here are a few of the reasons I think you should use Vue:
 
 ## Clearly Compartmentalized Format
