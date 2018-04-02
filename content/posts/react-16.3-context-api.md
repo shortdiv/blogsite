@@ -132,14 +132,14 @@ The nice thing about handling contexts this way is that now you can write your t
 ```
 
 ### Option 2: Lifecycle Hooks
-Most of the time, accessing values from context is done so via lifecycle hooks. In order to access context from our Consumer, we'll create an intermediary component that passes context to the Layer as a prop. We'll call this (for lack of a better name) `layersAndThings`. 
+Most of the time, accessing values from context is done so via lifecycle hooks. In order to access context from our Consumer from a lifecycle hook, we can pass context directly to the component via props.
 
 ```
-const layersAndThings = (
+<MapContextProvider>
   <MapContext.Consumer>
     {context => <FeatureLayer context={context} />}
   </MapContext.Consumer>
-);
+</MapContextProvider>
 ```
 
 We can now update our Layer component such that context is accessed via a lifecycle hook than via the render function. 
@@ -153,13 +153,8 @@ class Layer extends React.Component {
 }
 ```
 
-The downside to this approach is that templates are not as declarative as in Option 1.
+Compared to the previous approach in Option 1, passing context in as a prop is a lot clearer since we can isolate the logic of creating a new layer in the `componentDidMount` lifecycle hook. Moreover, our templates become a lot more declarative as we can clearly see the consumer of a context and how data is being passed from Provider to Consumer. 
 
-```
-<MapContextProvider>
-  { layersAndThings } // not very clear who children are //
-</MapContextProvider>
-```
 
 ## Wrap Up
-All in all, I'm not a huge fan of the new Context API. The new API makes some sense in the context of rendering actual markup to the DOM, all of which are incredibly well explained in the react docs. However, when rendering null components, the new Context API feels clunky and a lot of the declarative niceties are lost in the additional templating required for the Provider/Consumer pattern to work. If you're interested in playing around with the code I wrote for this, check out [this codepen collection](https://codepen.io/collection/nZrBNp/)
+If you've ever worked with Vue, you'd notice that the new Context API in React works a lot like scoped slots in Vue. While it requires additional wrapper components, it is incredibly declarative and it is easy to see how context is being passed by simply looking at the composite templates. If you're interested in playing around with the code I wrote for this, check out [this codepen collection](https://codepen.io/collection/nZrBNp/)
