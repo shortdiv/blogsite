@@ -3,7 +3,7 @@ title: "Old to New; Contexts in React 16.3"
 tags: ["react", "javascript", "frontend"]
 categories: []
 date: 2018-04-01T14:18:15-05:00
-draft: true
+draft: false
 ---
 
 A couple of days ago, React 16.3 was released. The update brought with it many changes, including an official (recommended for use) Context API that replaces the old (not recommended for use) Context API, a `createRef` API, and a `forwardRef` API to name a few. Among the changes introduced in React 16.3, I most anticipated the change to the Context API.
