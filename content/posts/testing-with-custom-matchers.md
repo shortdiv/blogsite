@@ -44,7 +44,7 @@ describe('components', () => {
     jasmine.addMatchers({
       toHaveContent: () => {
         const isNonEmpty = () => {
-          return options.innerHTML.length !== 0
+          return options.$el.innerHTML.length !== 0
         }
         return {
           compare: (options) => {
@@ -69,12 +69,12 @@ describe('components', () => {
       template: `<div><p>{{ msg }}</p></div>`,
       data () { return msg: 'hello there' }
     }).$mount()
-    expect(vm.$el).toHaveContent()
+    expect(vm).toHaveContent()
   })
 })
 ```
 
-For the working code, check out [the repo](https://github.com/shortdiv/vue-jasmine-custom-matchers)
+For the working code, check out [the repo](https://github.com/shortdiv/vue-testing-with-custom-matchers/tree/master/vue-jasmine-custom-matchers)
 
 ## Chai
 
@@ -88,7 +88,7 @@ describe('component', () => {
         utils.addMethod(chai.Assertion.prototype, 'toHaveContent', function() {
           const obj = this._obj
           this.assert(
-            obj.innerHTML.length > 0
+            obj.$el.innerHTML.length > 0
             `expected ${obj} to have content but was empty`,
             `expected ${obj} to not have content`
           )
@@ -101,12 +101,12 @@ describe('component', () => {
       template: `<div><p>{{ msg }}</p></div>`,
       data () { return msg: 'hello there' }
     }).$mount()
-    expect(vm.$el).toHaveContent()
+    expect(vm).toHaveContent()
   })
 })
 ```
 
-For the working code, check out [the repo](https://github.com/shortdiv/vue-chai-custom-matchers)
+For the working code, check out [the repo](https://github.com/shortdiv/vue-testing-with-custom-matchers/tree/master/vue-chai-custom-matchers)
 
 ## Jest
 
@@ -117,7 +117,7 @@ describe('component', () => {
   beforeEach(() => {
     expect.extend({
       toHaveContent: (received) => {
-        const pass = received.innerHTML.length > 0
+        const pass = received.$el.innerHTML.length > 0
         if (pass) {
           return {
             message: () =>
@@ -139,7 +139,7 @@ describe('component', () => {
       template: `<div><p>{{ msg }}</p></div>`,
       data () { return msg: 'hello there' }
     }).$mount()
-    expect(vm.$el).toHaveContent()
+    expect(vm).toHaveContent()
   })
 })
 ```
@@ -148,7 +148,7 @@ You can also extrapolate the code in the beforeEach block into a separate file a
 
 ```JS
 const customMatchers = {}
-customMatchers.isAComponent = () => {...}
+customMatchers.toHaveContent = () => {...}
 global.expect.extend(customMatchers)
 ```
 
@@ -159,7 +159,7 @@ module.exports = {
 };
 ```
 
-For the working code, check out [the repo](https://github.com/shortdiv/vue-jest-custom-matchers)
+For the working code, check out [the repo](https://github.com/shortdiv/vue-testing-with-custom-matchers/tree/master/vue-jest-custom-matchers)
 
 ## Conclusion
 
