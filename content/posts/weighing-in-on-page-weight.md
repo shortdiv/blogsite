@@ -7,8 +7,6 @@ date: 2018-12-01T21:38:21-06:00
 draft: false
 ---
 
-# Weighing in on page weight.
-
 Early on in my career, when web performance metrics were brought up in conversation, I would take how others reacted to the number as a cue to understanding what those numbers meant (read: I had no idea what those numbers meant). A high number elicited shock and horror, while a low number drew admiration and praise. This could only mean, high page weight bad, low page weight good. Though my naïveté around web performance at the time was a result of my overall lack of experience, it did highlight a point worth considering; the concept of a “page weight” is somewhat of a confusing term especially when seen in isolation.
 
 Weight is ubiquitous with something tangible that can be consistently marked by a unit of measurement. Often when we talk about weight, we talk about mass. Something weighing a tonne means it occupies a lot of mass for example. In the realm of software however, because we’re dealing with digital information in the form of bits and bytes rather than physical objects mass is zero. The reference to “weight” therefore is a misnomer (similar to how serverless is a misnomer for just not your server). Therefore, when we refer to “weight” in web performance, what we really mean is page load, or the speed by which the bytes of a webpage is transferred across a network.

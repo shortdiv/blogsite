@@ -7,8 +7,6 @@ date: 2018-12-04T19:15:38-06:00
 draft: false
 ---
 
-# If you can read this, the fonts work.
-
 Typography plays a central role in the design, branding, and overall readability of content. On the web, typography is achieved chiefly via webfonts. While the default system/[”web-safe”](https://robinrendle.com/notes/in-defense-of-webfonts/) fonts (hello Arial, Helvetica, sans-serif) are a reasonable and incredibly performant strategy for presenting content online, webfonts allow you to customize your typography to create a memorable, and delightful experience for your users. Even so, custom webfonts (as most nice things do) come at a performance cost. The text (and many other styles defined in your style sheet) is blocked from rendering until your requested webfont loads. This means a terrible overall experience for users who may experience jank via layout repaints or worse, be presented with no text at all. Considering that webfonts are responsible for the design and general readability of your web content, optimizing your web fonts should be of high priority in your overall performance strategy.
 
 ## Flashy in a bad way

@@ -7,8 +7,6 @@ date: 2018-12-05T19:02:43-06:00
 draft: false
 ---
 
-# Don’t Be Such a Render Block
-
 In previous posts, we talked about optimizing our websites to reduce page weight and inadvertently decrease overall page load time. This page load metric, though incredibly important, doesn’t fully take into account the user’s perception of a websites’ performance. At the very least, a user’s goal when visiting a website is to view the page content. As a result, they are more likely attuned to the time it takes for a page to be viewable ([first meaningful paint](https://www.quora.com/What-does-First-Meaningful-Paint-mean-in-Web-Performance)) or usable (time to interactive) rather than on the time it takes for the entire page to load (page load time). Optimizing for render performance requires a sound understanding of the steps the browser takes when going from initial page request to rendering pixels to the screen.
 
 ![progressive page rendering](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/progressive-rendering.png)

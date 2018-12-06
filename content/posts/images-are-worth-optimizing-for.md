@@ -7,8 +7,6 @@ date: 2018-12-02T21:05:54-06:00
 draft: false
 ---
 
-# Images Are Worth Optimizing For
-
 Images make up a large portion of a webpage’s payload. According to the HTTP Archive, the average image size has grown almost twofold and now constitute a whopping 63% of total bytes of a webpage. This growth in images on the web has coincided with faster network speeds and growing bandwidth; meaning that loading webpages today has never been faster— for some of us. High network latencies and low bandwidth (mostly over mobile connections) is unfortunately commonplace for a large percentage of the world. This means incredibly slow webpage load times and an increasingly frustrating experience browsing webpages. While doing away with images altogether would theoretically solve the problem of slow page load—removing all images from the top 1,000 websites, these sites would load 30% faster on average over 3G (high performance images)—a text only webpage would significantly hamper user engagement. Thankfully, there are many tricks to optimizing images for the web so we don’t have to skimp on the overall design and user experience of a webpage.
 
 ## File Formats

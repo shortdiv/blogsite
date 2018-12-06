@@ -7,8 +7,6 @@ date: 2018-12-03T21:06:38-06:00
 draft: false
 ---
 
-# Video killed the web performance star
-
 Video is one of the most sought out mediums on the web and is used widely in web page designs today. [According to a Cisco report](https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/white-paper-c11-741490.html), video constitutes the majority of the world’s internet traffic. In 2017, video was reported to have constituted 75% of all internet traffic and this number is slated to surpass 80% by 2022. This should come as no surprise to most of use, considering the fact that video content is a powerful medium for visual communication and offers a great way to keep users engaged. Adding video to websites however, can oftentimes be a double-edged sword; We may make some gains via a richer, more delightful user experience but risk performance issues if our websites are not optimized appropriately. This, alongside the rapid growth of traffic originating from mobile and wireless connections means we as developers are increasingly responsible for optimizing our sites for performance. In this post, we’ll dive into video optimization strategies so we can reap the benefits video provides without driving users away.
 
 ## Is Video the problem?
