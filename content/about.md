@@ -10,9 +10,8 @@ things Open Source. I've been spending most of my time on the front end of
 things and have come to appreciate the quirks of JavaScript and its many
 frameworks.
 
-Currently, I'm a developer at a startup called [Lucro](http://getlucro.com/)
-where I'm building financial modelling software to help real estate investors
-with their underwriting. Before that, I worked at a smattering of companies
+Currently, I'm a developer advocate at [Netlify](http://netlify.com/)
+where I speak and write about the JAMstack architecture. Before that, I worked at a smattering of companies
 building websites for mid to large scale client projects and story-telling
 apps/tools for journalists. In my free time, I'm an avid rock climber and
 cyclist.
