@@ -25,13 +25,16 @@ When a user navigates to a webpage, they are presented with a push notification 
 
 Push notifications are by nature disruptive. Because they (by proxy of service workers) operate outside of a webpage’s ordinary render cycle, they will always interrupt a user’s workflow. Even so, we don’t have to be completely controlled by the immediacy that push notifications demand. For one, we can start by designing notifications with the user’s goals in mind.
 
-**Make the Intent of Notifications clear**
+### Make the Intent of Notifications clear
+
 Oftentimes, when users are met with push notifications, the intent of those notifications aren’t always clear. This is the main reason why we all find push notifications annoying in the first place, especially when we are presented with these popups on initial page load with hardly any context. From a web page’s perspective, the goal is to have users opt in. With this goal in mind, a better approach would be to provide users with some context around why they should subscribe to updates. For instance, if the page is a sports website like ESPN or NHL, notify the users that they’ll receive important game updates if they opt in to notifications. This clarity makes users more likely to opt in, instead of quickly dismissing a notification without a moment’s glance.
 
-**Make notifications truly timely**
+### Make notifications truly timely
+
 With most notifications, timing matters. In this day and age of information overload, the last thing you want to do is to add to the noise by sending users incessant notifications. One way to keep users engaged without feeling overburdened, is to figure out when an interruption makes sense. For example, we can send an active or regular user of a web app a notification asking if they’d like to receive notifications to stay up to date with content. Another useful case would be offering to send updates to users if they are accessing a weather-related app from an address where a storm is imminent.
 
-**Make notifications silent**
+### Make notifications silent
+
 One of the most intriguing uses of push notifications, was to not use the display aspect of them at all. While this seems counterintuitive, [Sebastiaan Andeweg](http://sebastiaanandeweg.nl/) [demo-ed an application](https://seblog.nl/2018/11/13/3/pushapi-without-notifications) where he used the Push API to notify the service worker to cache newly updated content in the background. This can be a handy way to give users access to updated content even when they’re offline, which is most useful when subscribing to content from magazines, podcasts and blogs.
 
 ## Push, but don’t push too hard
