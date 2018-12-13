@@ -1,8 +1,8 @@
 ---
 title: "At Your Service Worker"
 description: ""
-tags: [performance, advent, frontend]
-categories: [performance, advent, frontend]
+tags: [pwa, advent, frontend]
+categories: [pwa, advent, frontend]
 date: 2018-12-09T20:43:10-06:00
 draft: false
 ---

@@ -1,8 +1,8 @@
 ---
 title: "If it's not online does it exist"
 description: ""
-tags: [performance, advent, frontend]
-categories: [performance, advent, frontend]
+tags: [pwa, advent, frontend]
+categories: [pwa, advent, frontend]
 date: 2018-12-10T17:45:35-06:00
 draft: false
 ---

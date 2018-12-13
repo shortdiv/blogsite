@@ -1,8 +1,8 @@
 ---
 title: "Leveraging the Mobile Web"
 description: ""
-tags: [performance, advent, frontend]
-categories: [performance, advent, frontend]
+tags: [pwa, advent, frontend]
+categories: [pwa, advent, frontend]
 date: 2018-12-08T18:45:24-06:00
 draft: false
 ---
