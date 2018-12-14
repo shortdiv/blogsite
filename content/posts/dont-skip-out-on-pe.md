@@ -4,7 +4,7 @@ description: ""
 tags: []
 categories: []
 date: 2018-12-14T17:20:33-06:00
-draft: true
+draft: false
 ---
 
 This week, I focused on the many aspects of PWAs and their role in making the web experience more streamlined across browsers and devices. Inherent to PWAs is the concept of progressive enhancement. To the untrained eye, progressive enhancement might seem akin to the concept of “it works without JavaScript”. While this is kinda sorta true (a well built PWA should work with JS turned off 🤞🏾), progressive enhancement is more about using web technologies in a so-called “layered” fashion. This technique of building apps makes them adaptable and allows them to run seamlessly regardless of bandwidth, network connectivity or software. In short, Progressive Enhancement is the deliberate strategy of building apps on the foundation of making it usable everywhere.

@@ -1,8 +1,8 @@
 ---
 title: "The (not so) secret life of service workers"
 description: ""
-tags: [performance, advent, frontend]
-categories: [performance, advent, frontend]
+tags: [pwa, advent, frontend]
+categories: [pwa, advent, frontend]
 date: 2018-12-11T18:58:05-06:00
 draft: false
 ---
