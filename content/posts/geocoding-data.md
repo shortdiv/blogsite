@@ -4,7 +4,7 @@ description: ""
 tags: [gis, mapbox]
 categories: []
 date: 2019-02-28T23:17:54-06:00
-draft: true
+draft: false
 ---
 
 A key step in the data visualization process is the conversion of data to the right format. When working with geospatial related information in particular, data needs to be in [geoJSON](http://geojson.org/) to be accurately superimposed onto a map. In many instances, geospatial data available via Open Data Portals like data.gov is already in a proper format to be mapped. However, there are times when the available data needs to be cleaned and/or transformed into a more appropriate format to be useable. For example, physical address data needs to be converted to coordinates so they can be properly added to a map. In cases like these, data formatters specifically known as geocoders come in handy.
