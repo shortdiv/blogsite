@@ -3,7 +3,7 @@ title: "Walking at angles"
 description: ""
 tags: [advent, frontend, threejs]
 categories: []
-date: 2019-12-01T22:43:20-06:00
+date: 2019-12-02T21:45:21-06:00
 draft: false
 ---
 
