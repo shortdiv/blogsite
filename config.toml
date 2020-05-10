@@ -1,4 +1,4 @@
-baseURL = "http://shortdiv.com/"
+baseURL = "https://shortdiv.com/"
 languageCode = "en-us"
 title = "<shortdiv />"
 theme = "pickles"

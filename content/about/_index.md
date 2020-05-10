@@ -8,7 +8,7 @@ things Open Source. I've been spending most of my time on the front end of
 things and have come to appreciate the quirks of JavaScript and its many
 frameworks.
 
-Currently, I'm a developer advocate at [Netlify](http://netlify.com/)
+Currently, I'm a developer advocate at [Netlify](https://netlify.com/)
 where I speak and write about the JAMstack architecture. Before that, I worked at a smattering of companies
 building websites for mid to large scale client projects and story-telling
 apps/tools for journalists. In my free time, I'm an avid rock climber and
