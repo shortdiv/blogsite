@@ -11,7 +11,7 @@ theme = "pickles"
   paginate = 5
   twitter = "shortdiv"
   linkedin = "shortdiv"
-  feed="index.xml"
+  feed="/index.xml"
   favicon = "/favicon/favicon.ico"
 
 [[menu.main]]
