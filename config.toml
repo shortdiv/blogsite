@@ -2,8 +2,6 @@ baseURL = "https://shortdiv.com/"
 languageCode = "en-us"
 title = "<shortdiv />"
 theme = "pickles"
-disqusShortname = "shortdiv-com"
-
 
 [taxonomies]
   category = "categories"
