@@ -1,7 +1,7 @@
 ---
 title: "2021 Alive and Mostly Well"
 date: 2021-12-31T20:48:29-08:00
-draft: false
+draft: true
 ---
 
 Standing at the end of another year, I couldn’t have possibly imagined what this year would hold. I think I can safely and with absolute certainty say that this year has never been and will never be like any other. While my professional life continued to prosper, 2021 has been a year of immense personal sadness.
