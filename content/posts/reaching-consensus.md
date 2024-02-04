@@ -1,7 +1,7 @@
 ---
 title: "Reaching Consensus"
 description: ""
-tags: []
+tags: [febontheweb, distributedsystems]
 categories: []
 date: 2024-02-02T23:59:03-06:00
 draft: false
