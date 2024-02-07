@@ -1,5 +1,5 @@
 ---
-title: "She Doesnt Even Go Here Membership Protocols"
+title: "She Doesnt Even Go Here! Defining membership in a distributed system"
 description: ""
 tags: [febontheweb, distributedsystems]
 categories: []
