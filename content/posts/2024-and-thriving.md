@@ -4,7 +4,7 @@ date: 2024-12-31T20:48:29-08:00
 draft: false
 ---
 
-2024 was the year when I finally transitioned from surviving to thriving. With everything that transpired over the last few years, I got lost in the chaos of my reality and it's taken me a second to "get back". I'm not quite who I used to be, but I'm become a version of myself that I'm quite pleased with, same same but different.
+2024 was the year when I finally transitioned from surviving to thriving. With everything that transpired over the last few years, I got lost in the chaos of my reality and it's taken me a second to "get back". I'm not quite who I used to be, but I've become a version of myself that I'm quite pleased with, same same but different.
 
 The year came and went, for the most part, without incident. And (for once) I have no one to blame but myself for any and all shenanigans I found myself in. I grew, I learnt, and successfully averted any major crisis. In no specific order, here’s everything that happened this year in a nutshell:
 
