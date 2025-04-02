@@ -4,7 +4,7 @@ description: ''
 tags: [personal]
 categories: []
 date: 2021-03-03T22:25:47+08:00
-draft: false
+draft: true
 ---
 
 Today was a really hard day. I lost the man who raised me. The man who was there for all my milestones. We didn't always agree but he had a heart of gold and was always there for his family, his friends, his neighborhood, his community.
