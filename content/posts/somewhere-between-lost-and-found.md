@@ -7,7 +7,7 @@ date: 2025-07-24T09:23:09-04:00
 draft: false
 ---
 
-A few years ago, I received news of a professor’s passing in the most bizarrely impersonal way we tend to receive news these days: via a twitter mention from a college ex I hadn’t spoken to in years. The memorial service was set for that weekend in Central Massachusetts where he and his family lived. At the time, I was living in Cambridge, which was just a short train ride away. But I never it past Back Bay.
+A few years ago, I received news of a professor’s passing in the most bizarrely impersonal way we tend to receive news these days: via a twitter mention from a college ex I hadn’t spoken to in years. The memorial service was set for that weekend in Central Massachusetts where he and his family lived. At the time, I was living in Cambridge, which was just a short train ride away. But I never made it past Back Bay.
 
 On the journey over, I felt a quiet uncertainty about whether I belonged. It had been years since I’d graduated. I was never one of his closest students, let alone the type who kept in touch. So instead of attending the service, I hopped off the train and buried my grief in the frosting of a Georgetown cupcake. My partner at the time tried to comfort me with words of wisdom from the Stoics on facing death. “Grief is internal, death inevitable”, he said (or something along those lines). “No ceremony could alter what already was. Your presence wouldn’t have mattered.”
 
