@@ -1,7 +1,7 @@
 baseURL = "https://shortdiv.com/"
 languageCode = "en-us"
 title = "<shortdiv />"
-theme = "pickles"
+theme = "PaperMod"
 
 [taxonomies]
   category = "categories"
