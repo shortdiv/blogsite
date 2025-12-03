@@ -1,5 +1,5 @@
 ---
-title: "What is Local First?"
+title: "What is local-first?"
 description: ""
 tags: [advent, local-first]
 categories: []
