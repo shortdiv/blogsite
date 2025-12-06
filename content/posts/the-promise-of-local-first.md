@@ -1,5 +1,5 @@
 ---
-title: "The Promise of Local First"
+title: "The promise of local-first"
 description: ""
 tags: [advent, local-first]
 categories: []
