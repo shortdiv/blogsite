@@ -46,7 +46,7 @@ In this scenario, the node restart logic retries the failed node 3 times with a 
 
 A simpler approach is to create a region-aware deployment pipeline, especially when a failover region is not in place. With a tool like Pulumi, you can declaratively define the regions and deployment scripts in code. Something like:
 
-```hcl
+```ts
 import * as pulumi from "@pulumi/pulumi";
 import * as docker from "@pulumi/docker";
 import * as aws from "@pulumi/aws";
