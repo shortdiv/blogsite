@@ -1,12 +1,11 @@
 ---
 title: "There's an 'A' in failure"
 description: ""
-tags: [advent]
+tags: [personal]
 categories: []
 date: 2025-12-16T22:53:59-05:00
 draft: false
 ---
-
 
 I was recently let go from my role. This wasn’t my first experience with an unexpected termination. In fact, this time last year I found myself in a similar situation albeit under different circumstances and with far more surprise. Yet this one felt like an especially low point in my career; unexpected in a similar way, but predictable given the circumstances.
 
