@@ -1,7 +1,7 @@
 ---
 title: "2018 in Review"
 description: ""
-tags: [review]
+tags: [personal]
 categories: [review]
 date: 2018-12-31T19:48:50-06:00
 draft: false

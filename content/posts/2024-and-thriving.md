@@ -1,6 +1,7 @@
 ---
 title: "2024 and thriving"
 date: 2024-12-31T20:48:29-08:00
+tags: [personal]
 draft: false
 ---
 
