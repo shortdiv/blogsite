@@ -1,5 +1,5 @@
 ---
-title: "Dont Lose the Plot"
+title: "Whatever you do, don't lose the plot"
 description: ""
 tags: [ai]
 categories: []
