@@ -14,6 +14,8 @@ theme = "PaperMod"
   feed="/index.xml"
   favicon = "/favicon/favicon.ico"
 
+hideAuthor = true
+
 [params.author]
   name = "Divya"
 
