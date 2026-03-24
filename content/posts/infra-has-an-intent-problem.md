@@ -1,5 +1,5 @@
 ---
-title: "Infra Has an Intent Problem"
+title: "Infra has an intent problem"
 description: ""
 tags: []
 categories: [ai, infra]
