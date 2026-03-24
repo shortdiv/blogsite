@@ -12,6 +12,8 @@ theme = "PaperMod"
   twitter = "shortdiv"
   linkedin = "shortdiv"
   feed="/index.xml"
+
+[params.assets]
   favicon = "/favicon/favicon.ico"
 
 hideAuthor = true
