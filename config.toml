@@ -18,9 +18,6 @@ theme = "PaperMod"
 
 hideAuthor = true
 
-[params.author]
-  name = "Divya"
-
 [[menu.main]]
   name = "Home"
   url = "/"
