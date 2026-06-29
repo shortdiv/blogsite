@@ -1,6 +1,6 @@
 ---
 title: "Ship fast, think later"
-description: "How coding agents changed the way I onboard and why shipping faster doesn't always mean understanding more"
+description: ""
 tags: []
 categories: [ai]
 date: 2026-06-29T17:27:04-04:00
