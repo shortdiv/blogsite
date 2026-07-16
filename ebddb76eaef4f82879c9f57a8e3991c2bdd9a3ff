@@ -1,0 +1,22 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.2.7",
+  "base_commit_sha": "ebddb76eaef4f82879c9f57a8e3991c2bdd9a3ff",
+  "prompts": {
+    "c9a9a07527f3acdb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6c98-7b58-7553-98fe-66ecd166ee80",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 3,
+      "overriden_lines": 0,
+      "messages_url": "http://localhost:4000/cas/d56d6cd7dcc17e7e5be0694b94a8e8735a9d1b81f9906664c6a1be150f62f5a1"
+    }
+  }
+}
