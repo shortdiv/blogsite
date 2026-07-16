@@ -1,0 +1,24 @@
+content/posts/should-i-use-an-agent.md
+  c9a9a07527f3acdb 1-3,5-11,13-15,17-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.2.7",
+  "base_commit_sha": "a413f69b059349c9a264091a5a193ed1354a0674",
+  "prompts": {
+    "c9a9a07527f3acdb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f6c98-7b58-7553-98fe-66ecd166ee80",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 29,
+      "total_deletions": 0,
+      "accepted_lines": 25,
+      "overriden_lines": 3,
+      "messages_url": "http://localhost:4000/cas/d56d6cd7dcc17e7e5be0694b94a8e8735a9d1b81f9906664c6a1be150f62f5a1"
+    }
+  }
+}
