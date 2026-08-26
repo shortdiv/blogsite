@@ -1,0 +1,273 @@
+{{- define "main" }}
+
+<article class="work-page">
+  <header class="work-hero">
+    <h1>{{ .Title }}</h1>
+    {{- with .Params.intro }}
+    <p>{{ . }}</p>
+    {{- end }}
+  </header>
+
+  {{- with .Params.projects }}
+  <h2 class="work-section-label">Selected Work</h2>
+  <div class="work-list">
+    {{- range . }}
+    <section class="work-card">
+      <div class="work-card__head">
+        <div class="work-card__title">
+          {{- with .icon }}<img class="work-card__icon" src="{{ . | relURL }}" alt="" loading="lazy" width="28" height="28">{{- end }}
+          <h3>{{ .name }}</h3>
+        </div>
+        {{- if or .tag .tags }}
+        <div class="work-card__meta">
+          {{- with .tag }}<span class="work-card__tag">{{ . }}</span>{{- end }}
+          {{- with .tags }}
+          <div class="work-card__tags">
+            {{- range . }}<span class="work-card__chip">{{ . }}</span>{{- end }}
+          </div>
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+      {{- with .description }}
+      {{- range . }}<p>{{ . }}</p>{{- end }}
+      {{- end }}
+      {{- with .links }}
+      <ul class="work-card__links">
+        {{- range . }}
+        <li>
+          <a class="work-card__link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            {{ .label }}
+            <svg class="work-card__link-icon" aria-hidden="true" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17 17 7" />
+              <path d="M8 7h9v9" />
+            </svg>
+          </a>
+        </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+    </section>
+    {{- end }}
+  </div>
+  {{- end }}
+
+  {{- with .Params.sinceThenText }}
+  <h2 class="work-section-label">Lately</h2>
+  <section class="work-card">
+    <p>{{ . }}</p>
+  </section>
+  {{- end }}
+
+  {{- if or .Params.availability .Params.closing }}
+  <section class="work-outro">
+    {{- with .Params.availability }}
+    <p class="work-availability"><span class="work-availability__dot"></span>{{ . }}</p>
+    {{- end }}
+    {{- with .Params.closing }}<p>{{ . | markdownify }}</p>{{- end }}
+  </section>
+  {{- end }}
+</article>
+
+<style>
+  .work-page {
+    --work-accent: rgb(217, 143, 60);
+    --work-chip-border: rgb(96, 97, 101);
+    max-width: var(--main-width);
+    margin: 0 auto;
+    padding: var(--gap) var(--gap) calc(var(--gap) * 2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--content-gap);
+  }
+
+  :root[data-theme="light"] .work-page,
+  :root:not([data-theme="dark"]) .work-page {
+    --work-accent: rgb(180, 106, 20);
+    --work-chip-border: var(--border);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .work-page {
+      --work-accent: rgb(217, 143, 60);
+      --work-chip-border: rgb(96, 97, 101);
+    }
+  }
+
+  .work-hero {
+    padding: 0 0 calc(var(--content-gap) / 2);
+  }
+
+  .work-hero h1 {
+    font-size: 40px;
+    margin: 0 0 var(--content-gap);
+  }
+
+  .work-hero p {
+    color: var(--secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .work-section-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin: var(--content-gap) 0 0;
+  }
+
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--content-gap);
+  }
+
+  .work-card {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: calc(var(--gap) * 1.25);
+  }
+
+  .work-card__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--content-gap);
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .work-card__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .work-card__icon {
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .work-card__head h3 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .work-card__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .work-card__tag {
+    color: var(--secondary);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .work-card__tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .work-card__chip {
+    font-size: 11px;
+    line-height: 1;
+    color: var(--secondary);
+    border: 1px solid var(--work-chip-border);
+    border-radius: 999px;
+    padding: 4px 9px;
+    white-space: nowrap;
+  }
+
+  .work-card p {
+    color: var(--secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .work-card p + p,
+  .work-card p + .work-availability,
+  .work-card .work-availability + p {
+    margin-top: 14px;
+  }
+
+  .work-card__links {
+    list-style: none;
+    margin: var(--content-gap) 0 0;
+    padding-top: var(--content-gap);
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .work-card__links .work-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--content);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .work-card__links .work-card__link:hover {
+    color: var(--work-accent);
+  }
+
+  .work-card__link-icon {
+    flex-shrink: 0;
+    color: var(--secondary);
+  }
+
+  .work-card__links .work-card__link:hover .work-card__link-icon {
+    color: var(--work-accent);
+  }
+
+  .work-card__link-chip:hover .work-card__link-icon {
+    color: var(--work-accent);
+  }
+
+  .work-availability {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .work-availability__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--work-accent);
+    flex-shrink: 0;
+  }
+
+  .work-card a {
+    color: var(--work-accent);
+  }
+
+  .work-outro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: calc(var(--content-gap) / 2) 0 0;
+  }
+
+  .work-outro p {
+    color: var(--secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .work-outro a {
+    color: var(--work-accent);
+  }
+</style>
+
+{{- end }}{{/* end main */}}

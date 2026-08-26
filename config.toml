@@ -9,6 +9,9 @@ theme = "PaperMod"
 
 [params]
   paginate = 5
+  description = "Divya's blog on infra, web, and software engineering"
+
+[params.social]
   twitter = "shortdiv"
   linkedin = "shortdiv"
   feed="/index.xml"
@@ -27,3 +30,8 @@ hideAuthor = true
   name = "About"
   url = "/about"
   weight = 2
+
+[[menu.main]]
+  name = "Work"
+  url = "/work"
+  weight = 3
