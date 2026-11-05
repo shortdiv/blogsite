@@ -1,7 +1,7 @@
 ---
 title: "Whatever you do, don't lose the plot"
 description: ""
-tags: [ai]
+tags: [ai, ai-agents]
 categories: []
 date: 2026-03-20T15:13:19-04:00
 draft: false

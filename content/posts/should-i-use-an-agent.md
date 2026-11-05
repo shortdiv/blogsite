@@ -1,7 +1,7 @@
 ---
 title: "Should I use an agent?"
 description: ""
-tags: [ai]
+tags: [ai, ai-agents]
 categories: []
 date: 2026-07-16T15:48:06-04:00
 draft: false

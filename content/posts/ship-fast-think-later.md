@@ -1,7 +1,7 @@
 ---
 title: "Ship fast, think later"
 description: ""
-tags: []
+tags: [ai-agents]
 categories: [ai]
 date: 2026-06-29T17:27:04-04:00
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "You might not need an orchestrator"
 description: ""
-tags: [advent]
+tags: [advent, infrastructure]
 categories: []
 date: 2025-12-17T22:59:11-05:00
 draft: false

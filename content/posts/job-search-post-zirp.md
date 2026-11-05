@@ -1,7 +1,7 @@
 ---
 title: "Job Search Post-ZIRP"
 description: ""
-tags: [personal]
+tags: [personal, career]
 categories: []
 date: 2025-04-02T14:25:47-04:00
 draft: false

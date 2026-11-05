@@ -1,7 +1,7 @@
 ---
 title: "Infra has an intent problem"
 description: ""
-tags: []
+tags: [infrastructure, ai-agents]
 categories: [ai, infra]
 date: 2026-03-24T10:14:13-04:00
 draft: false

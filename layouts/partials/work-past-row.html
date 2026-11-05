@@ -1,0 +1,11 @@
+{{- /* One "Before freelancing" row: icon + name on the left, role at company on the right. */ -}}
+<span class="work-past__name">
+  {{- with .icon }}<img src="{{ . | relURL }}" alt="" width="24" height="24" loading="lazy">{{- end }}
+  {{- .name -}}
+</span>
+{{- if .role }}
+<span class="work-past__summary">
+  <span class="work-past__role">{{ .role }}</span>
+  {{- with .company }} at {{ . }}{{ end }}
+</span>
+{{- end }}

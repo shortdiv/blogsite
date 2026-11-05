@@ -9,6 +9,7 @@ theme = "PaperMod"
 
 [params]
   paginate = 5
+  ShowReadingTime = true
   description = "Divya's blog on infra, web, and software engineering"
 
 [params.social]
@@ -16,22 +17,28 @@ theme = "PaperMod"
   linkedin = "shortdiv"
   feed="/index.xml"
 
+[params.homeInfoParams]
+  Title = "Hi, I'm Div 👋"
+  image = "/images/divspeaking.jpg"
+  Content = "I write about infrastructure, observability, and building with agents. I also help early-stage teams with the work between engineering and growth. [Work with me →](/hire/)"
+
 [params.assets]
   favicon = "/favicon/favicon.ico"
 
 hideAuthor = true
 
 [[menu.main]]
-  name = "Home"
+  name = "Writing"
   url = "/"
   weight = 1
 
 [[menu.main]]
-  name = "About"
-  url = "/about"
+  name = "Work"
+  url = "/work/"
   weight = 2
 
 [[menu.main]]
-  name = "Work"
-  url = "/work"
+  name = "About"
+  url = "/about/"
   weight = 3
+

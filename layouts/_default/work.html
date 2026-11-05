@@ -2,271 +2,285 @@
 
 <article class="work-page">
   <header class="work-hero">
-    <h1>{{ .Title }}</h1>
-    {{- with .Params.intro }}
-    <p>{{ . }}</p>
-    {{- end }}
+    <h1>{{ .Params.heading | default .Title }}</h1>
+    {{- with .Params.lede }}<p class="work-hero__lede">{{ . }}</p>{{- end }}
+    {{- with .Params.cta }}<a class="work-hero__cta" href="{{ .url | relURL }}">{{ .label }}</a>{{- end }}
   </header>
 
-  {{- with .Params.projects }}
-  <h2 class="work-section-label">Selected Work</h2>
-  <div class="work-list">
+  {{- with .Params.clients }}
+  <div class="work-grid">
     {{- range . }}
-    <section class="work-card">
-      <div class="work-card__head">
-        <div class="work-card__title">
-          {{- with .icon }}<img class="work-card__icon" src="{{ . | relURL }}" alt="" loading="lazy" width="28" height="28">{{- end }}
-          <h3>{{ .name }}</h3>
-        </div>
-        {{- if or .tag .tags }}
-        <div class="work-card__meta">
-          {{- with .tag }}<span class="work-card__tag">{{ . }}</span>{{- end }}
-          {{- with .tags }}
-          <div class="work-card__tags">
-            {{- range . }}<span class="work-card__chip">{{ . }}</span>{{- end }}
-          </div>
-          {{- end }}
-        </div>
-        {{- end }}
-      </div>
-      {{- with .description }}
-      {{- range . }}<p>{{ . }}</p>{{- end }}
-      {{- end }}
-      {{- with .links }}
-      <ul class="work-card__links">
-        {{- range . }}
-        <li>
-          <a class="work-card__link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-            {{ .label }}
-            <svg class="work-card__link-icon" aria-hidden="true" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 17 17 7" />
-              <path d="M8 7h9v9" />
-            </svg>
-          </a>
-        </li>
-        {{- end }}
-      </ul>
-      {{- end }}
+    <section class="work-tile" id="{{ .name | urlize }}">
+      {{- if .icon }}<img class="work-tile__icon" src="{{ .icon | relURL }}" alt="{{ .iconAlt }}" width="40" height="40" loading="lazy">{{- end }}
+      {{- with .area }}<p class="work-tile__area">{{ . }}</p>{{- end }}
+      <h2>{{ .name }}</h2>
+      {{- with .summary }}<p class="work-tile__summary">{{ . }}</p>{{- end }}
     </section>
     {{- end }}
   </div>
   {{- end }}
 
-  {{- with .Params.sinceThenText }}
-  <h2 class="work-section-label">Lately</h2>
-  <section class="work-card">
-    <p>{{ . }}</p>
+  {{- with .Params.projects }}
+  <section class="work-past">
+    <h2 class="work-section-label">Before freelancing</h2>
+    <ul>
+      {{- range . }}
+      {{- $row := partial "work-past-row.html" . }}
+      <li>
+        {{- if or .description .links }}
+        <details>
+          <summary class="work-past__row">{{ $row }}</summary>
+          <div class="work-past__more">
+            {{- range .description }}
+            <p>{{ . | markdownify }}</p>
+            {{- end }}
+            {{- with .links }}
+            <ul class="work-past__links">
+              {{- range . }}
+              <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} ↗</a></li>
+              {{- end }}
+            </ul>
+            {{- end }}
+          </div>
+        </details>
+        {{- else }}
+        <div class="work-past__row">{{ $row }}</div>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ul>
   </section>
   {{- end }}
 
-  {{- if or .Params.availability .Params.closing }}
-  <section class="work-outro">
-    {{- with .Params.availability }}
-    <p class="work-availability"><span class="work-availability__dot"></span>{{ . }}</p>
-    {{- end }}
-    {{- with .Params.closing }}<p>{{ . | markdownify }}</p>{{- end }}
-  </section>
+  {{- with .Params.closing }}
+  <p class="work-outro">{{ . | markdownify }}</p>
   {{- end }}
 </article>
 
 <style>
+  /* Same reading width as the Writing list (.main supplies the side padding). */
   .work-page {
-    --work-accent: rgb(217, 143, 60);
-    --work-chip-border: rgb(96, 97, 101);
     max-width: var(--main-width);
     margin: 0 auto;
-    padding: var(--gap) var(--gap) calc(var(--gap) * 2);
-    display: flex;
-    flex-direction: column;
-    gap: var(--content-gap);
-  }
-
-  :root[data-theme="light"] .work-page,
-  :root:not([data-theme="dark"]) .work-page {
-    --work-accent: rgb(180, 106, 20);
-    --work-chip-border: var(--border);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .work-page {
-      --work-accent: rgb(217, 143, 60);
-      --work-chip-border: rgb(96, 97, 101);
-    }
-  }
-
-  .work-hero {
-    padding: 0 0 calc(var(--content-gap) / 2);
+    padding: var(--gap) 0 calc(var(--gap) * 3);
   }
 
   .work-hero h1 {
-    font-size: 40px;
     margin: 0 0 var(--content-gap);
+    font-size: 56px;
+    line-height: 1.05;
   }
 
-  .work-hero p {
-    color: var(--secondary);
-    line-height: 1.6;
+  .work-hero__lede {
+    max-width: 640px;
     margin: 0;
+    color: var(--secondary);
+    font-size: 20px;
+    line-height: 1.6;
   }
 
+  /* a.class so it outranks the dark-mode link colour (same specificity, later in the cascade). */
+  .work-page a.work-hero__cta {
+    display: inline-block;
+    margin-top: calc(var(--gap) * 1.25);
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: var(--theme);
+    font-weight: 500;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0 16px;
+    margin-top: calc(var(--gap) * 2.5);
+  }
+
+  /* Each tile spans four shared rows (icon, area, name, summary), so summaries line up
+     across tiles even when a name wraps. */
+  .work-tile {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    align-content: start;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--entry);
+  }
+
+  .work-tile__icon {
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+
+  .work-tile__area,
   .work-section-label {
-    font-size: 13px;
+    margin: 0;
+    color: var(--secondary);
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--secondary);
-    margin: var(--content-gap) 0 0;
   }
 
-  .work-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--content-gap);
+  .work-tile h2 {
+    margin: 8px 0 0;
+    font-size: 26px;
+    line-height: 1.1;
   }
 
-  .work-card {
-    background: var(--entry);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: calc(var(--gap) * 1.25);
+  .work-tile__summary {
+    margin: 16px 0 0;
+    color: var(--content);
+    font-size: 16px;
+    line-height: 1.6;
   }
 
-  .work-card__head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--content-gap);
-    flex-wrap: wrap;
-    margin-bottom: 10px;
+  .work-past {
+    margin-top: calc(var(--gap) * 4);
   }
 
-  .work-card__title {
+  .work-past .work-section-label {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .work-past ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .work-past > ul > li {
+    padding-top: 20px;
+  }
+
+  .work-past__row {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: var(--gap);
   }
 
-  .work-card__icon {
-    border-radius: 6px;
-    flex-shrink: 0;
-  }
-
-  .work-card__head h3 {
-    margin: 0;
-    font-size: 24px;
-  }
-
-  .work-card__meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-  }
-
-  .work-card__tag {
-    color: var(--secondary);
-    font-size: 14px;
-    white-space: nowrap;
-  }
-
-  .work-card__tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  .work-card__chip {
-    font-size: 11px;
-    line-height: 1;
-    color: var(--secondary);
-    border: 1px solid var(--work-chip-border);
-    border-radius: 999px;
-    padding: 4px 9px;
-    white-space: nowrap;
-  }
-
-  .work-card p {
-    color: var(--secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .work-card p + p,
-  .work-card p + .work-availability,
-  .work-card .work-availability + p {
-    margin-top: 14px;
-  }
-
-  .work-card__links {
+  summary.work-past__row {
+    cursor: pointer;
     list-style: none;
-    margin: var(--content-gap) 0 0;
-    padding-top: var(--content-gap);
-    border-top: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
   }
 
-  .work-card__links .work-card__link {
+  summary.work-past__row::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Expand marker after the name; turns into a minus when open. */
+  summary .work-past__name::after {
+    content: "+";
+    color: var(--secondary);
+    font-weight: 400;
+  }
+
+  details[open] > summary .work-past__name::after {
+    content: "−";
+  }
+
+  /* Indented to line up with the name, past the icon (24px + 10px gap). */
+  .work-past__more {
+    padding: 12px 0 4px 34px;
+    color: var(--content);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .work-past__more p {
+    margin: 0 0 12px;
+  }
+
+  .work-past__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+  }
+
+  /* Not the accent: that's the role colour, so links get their own. */
+  .work-past__links a {
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+  }
+
+  /* Dark: the palette's link green (#8CCB9B), 10:1 on the navy. */
+  :root[data-theme="dark"] .work-past__links a {
+    color: var(--kopi-green);
+    text-decoration-color: color-mix(in oklch, var(--kopi-green) 40%, transparent);
+  }
+
+  .work-past__name {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    color: var(--content);
-    text-decoration: none;
-    transition: color 0.15s ease;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 700;
   }
 
-  .work-card__links .work-card__link:hover {
-    color: var(--work-accent);
+  .work-past__name img {
+    border-radius: 5px;
   }
 
-  .work-card__link-icon {
-    flex-shrink: 0;
+  .work-past__summary {
     color: var(--secondary);
+    text-align: right;
   }
 
-  .work-card__links .work-card__link:hover .work-card__link-icon {
-    color: var(--work-accent);
-  }
-
-  .work-card__link-chip:hover .work-card__link-icon {
-    color: var(--work-accent);
-  }
-
-  .work-availability {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .work-availability__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--work-accent);
-    flex-shrink: 0;
-  }
-
-  .work-card a {
-    color: var(--work-accent);
+  .work-past__role {
+    color: var(--site-accent);
+    font-weight: 600;
   }
 
   .work-outro {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: calc(var(--content-gap) / 2) 0 0;
-  }
-
-  .work-outro p {
-    color: var(--secondary);
-    line-height: 1.6;
-    margin: 0;
+    margin: calc(var(--gap) * 3) 0 0;
+    color: var(--content);
+    font-size: 19px;
   }
 
   .work-outro a {
-    color: var(--work-accent);
+    color: var(--site-accent);
+  }
+
+  @media (max-width: 768px) {
+    .work-hero h1 {
+      font-size: 40px;
+    }
+
+    .work-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .work-tile {
+      display: block;
+      grid-row: auto;
+    }
+
+    .work-past__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    /* Stacked under the name, so step it down and indent past the icon (24px + 10px gap). */
+    .work-past__summary {
+      padding-left: 34px;
+      font-size: 15px;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .work-past__role {
+      font-weight: 500;
+    }
   }
 </style>
 

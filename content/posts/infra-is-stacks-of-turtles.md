@@ -1,7 +1,7 @@
 ---
 title: "Infra is stacks of turtles"
 description: ""
-tags: [advent]
+tags: [advent, infrastructure]
 categories: []
 date: 2025-12-22T21:21:36-05:00
 draft: false

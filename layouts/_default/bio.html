@@ -1,0 +1,158 @@
+{{- define "main" }}
+
+<article class="bio-page">
+  <div class="bio">
+    {{- with .Params.image }}
+    <div class="bio__avatar">
+      <img src="{{ . | relURL }}" alt="{{ $.Params.imageAlt | default "Photo of Divya" }}" width="560" height="560">
+      <svg width="0" height="0" aria-hidden="true">
+        <clipPath id="bio-blob" clipPathUnits="objectBoundingBox">
+          <path d="M0.75815095,0.0579477769 C0.879893708,0.187288937 0.902165272,0.677587654 0.799370955,0.785996249 C0.627963035,0.966765889 0.26163708,0.91434951 0.111342491,0.755791573 C-0.0332137967,0.603287436 -0.035795248,0.382887577 0.0965066612,0.173955315 C0.200239457,0.0101396315 0.648923894,-0.0580965318 0.75815095,0.0579477769 Z"></path>
+        </clipPath>
+      </svg>
+    </div>
+    {{- end }}
+
+    {{- with .Params.greeting }}
+    <p class="bio__title">
+      {{- range . }}<span>{{ . }}</span>{{- end }}
+    </p>
+    {{- end }}
+
+    <section class="bio__intro">
+      {{- with .Params.intro }}<h1>{{ . }}</h1>{{- end }}
+      {{- with .Params.subtitle }}<p class="bio__subtitle">{{ . }}</p>{{- end }}
+    </section>
+
+    <section class="bio__text post-content">
+      {{ .Content }}
+    </section>
+  </div>
+</article>
+
+<style>
+  .bio-page {
+    --bio-title-color: #445eff;
+    --bio-orange: var(--site-accent);
+    --bio-title-font: "Libre Bodoni", serif;
+    max-width: var(--main-width);
+    margin: 0 auto;
+    padding: var(--gap) var(--gap) calc(var(--gap) * 2);
+  }
+
+  /* The pen's orange is too light on PaperMod's light background; reuse the site amber there. */
+  :root[data-theme="light"] .bio-page,
+  :root:not([data-theme="dark"]) .bio-page {
+    --bio-orange: var(--site-accent);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .bio-page {
+      --bio-orange: var(--site-accent);
+    }
+  }
+
+  :root[data-theme="dark"] .bio-page {
+    --bio-orange: var(--site-accent);
+    --bio-title-color: #C9944F; /* kopi */
+  }
+
+  .bio {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: auto auto auto auto;
+  }
+
+  /* The blob is wider than its slot on purpose: the title is laid over its right edge, as in the pen. */
+  .bio__avatar {
+    grid-area: 1 / 4 / 3 / 9;
+    margin-top: 2.5rem;
+  }
+
+  .bio__avatar img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    clip-path: url(#bio-blob);
+  }
+
+  /* Pinned to the right edge of the column, still overlapping the blob. */
+  .bio__title {
+    grid-area: 1 / 7 / 2 / 11;
+    justify-self: end;
+    margin: 0;
+    color: var(--bio-title-color);
+    font-family: var(--bio-title-font);
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.3em;
+    z-index: 1;
+  }
+
+  .bio__title span {
+    display: block;
+  }
+
+  .bio__title span:nth-of-type(2) {
+    margin-left: 1rem;
+  }
+
+  /* Pulled up over the empty bottom of the blob's square box. */
+  .bio__intro {
+    grid-area: 3 / 1 / 4 / 11;
+    position: relative;
+    z-index: 1;
+    margin: -4.25rem 0 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .bio__intro h1,
+  .bio__intro p {
+    margin: 0;
+  }
+
+  .bio__intro h1 {
+    font: inherit;
+  }
+
+  .bio__intro .bio__subtitle {
+    margin-top: 0.5rem;
+    color: var(--bio-orange);
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .bio__text {
+    grid-area: 4 / 1 / 5 / 11;
+    margin-top: var(--content-gap);
+  }
+
+  /* Mobile: photo and title fill the column edge to edge. */
+  @media (max-width: 600px) {
+    .bio__avatar {
+      grid-area: 1 / 1 / 3 / 8;
+      margin-top: 2rem;
+    }
+
+    .bio__title {
+      grid-area: 1 / 6 / 2 / 11;
+      justify-self: end;
+      font-size: min(15vw, 5rem);
+    }
+
+    .bio__title span:nth-of-type(2) {
+      margin-left: 0.5rem;
+    }
+
+    .bio__intro {
+      margin-top: -1rem;
+    }
+  }
+</style>
+
+{{- end }}{{/* end main */}}

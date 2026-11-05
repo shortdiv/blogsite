@@ -1,7 +1,7 @@
 ---
 title: "There's an 'A' in failure"
 description: ""
-tags: [personal]
+tags: [personal, career]
 categories: []
 date: 2025-12-16T22:53:59-05:00
 draft: false

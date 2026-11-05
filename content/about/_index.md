@@ -1,10 +1,19 @@
 ---
 title: "About"
+description: "Divya is an engineer who helps early-stage teams with the work between engineering and growth."
 draft: false
+layout: "bio"
+image: "/images/divspeaking.jpg"
+imageAlt: "Divya speaking on stage at Øredev 2023"
+greeting: ["How", "Goes?"]
+intro: "My name is Divya."
+subtitle: "I'm glad you're here."
 ---
 
-Hello, my name is Divya. I'm a developer with a passion for the web and all things Open Source. I used to spend a large portion of my time on the fullstack side of things with a frontend leaning. As of the last few years, I've moved farther back in the stack, where I sometimes get to touch and—on many an (accidental) occasion—break the hearts of the coldest and barest of metals. This transition has been both delightfully interesting and chillingly intimidating to say the least.
+I'm a developer with a passion for the web. I used to spend a large portion of my time on the fullstack side of things. As of the last few years, I've moved farther through the stack, where I've supported developers at the platform level.
 
-I'm a platform engineer who has spent the last few years working at some really cool companies like Netlify and Fly.io. I've found a niche for myself in devtools over the years and now enjoy thinking about improving the UX of systems. In the free time that I have, I'm a serial hobbyist with a penchant for climbing rocks and riding bicycles.
+These days, I help early-stage teams at the intersection of engineering and growth. Some projects I've worked on include a discovery tool for an AI SRE startup, an observability framework for an LLM inference company and a GTM framework for a recent YC devtools startup.
 
-I've spent the last year contracting with founders and engineering teams on a question I find genuinely fascinating: how is AI changing the way we build and operate software? Most recently, I worked on a discovery tool for an AI SRE startup and a data collection tool and dashboard for tracking AI usage across teams. If that's a problem you're wrestling with, I'd love to talk, feel free to email me at **_hello[at]shortdiv[dot]com_**
+In the free time that I have, I'm a serial hobbyist with a penchant for climbing rocks and adventuring by bicycle.
+
+If you've got a problem you've been wrestling with or just want to chat, reach out at **_hello[at]shortdiv[dot]com_**.

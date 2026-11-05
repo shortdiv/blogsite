@@ -1,7 +1,7 @@
 ---
 title: "Keep the box, save the prompt"
 description: ""
-tags: []
+tags: [ai-agents]
 categories: []
 date: 2026-10-19T11:24:18-04:00
 draft: false

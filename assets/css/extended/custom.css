@@ -1,0 +1,253 @@
+/*
+ * Light palette: Div's kopi-c/susu values only (same set as the dark palette below).
+ * Susu background, kopi browns for text, kopi-c for lines, tarum navy as the accent.
+ */
+:root {
+  --theme: #F1E2C6;       /* susu */
+  --entry: #EEDFC4;       /* kopi text */
+  --primary: #1C120D;     /* kopi, 14.4:1 */
+  --content: #2B1C14;     /* kopi surface, 12.9:1 */
+  --secondary: #4A3022;   /* kopi border, 9.5:1 */
+  --tertiary: #BFA586;    /* kopi-c */
+  --border: #BFA586;      /* kopi-c */
+  --code-bg: #EEDFC4;
+  --site-accent: #1E2547; /* tarum surface, 11.7:1 */
+}
+
+/* PaperMod paints list pages with --code-bg in light mode; keep them on the cream. */
+:root:not([data-theme="dark"]) .list {
+  background: var(--theme);
+}
+
+:root[data-theme="dark"] {
+  --site-accent: rgb(217, 143, 60);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --site-accent: rgb(217, 143, 60);
+  }
+}
+
+/* PaperMod gives .first-entry a 320px min-height, which leaves a gap above the posts. */
+.first-entry.home-info {
+  min-height: auto;
+  margin: var(--gap) 0 calc(var(--gap) * 2);
+}
+
+.home-info .entry-content a {
+  color: var(--site-accent);
+  box-shadow: none;
+  font-weight: 500;
+}
+
+.home-info .entry-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.home-info__photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Experimental dark palette: tarum navy, susu cream, kopi browns. */
+:root[data-theme="dark"],
+.dark {
+  --theme: #131833;     /* tarum bg */
+  --entry: #1E2547;     /* surface */
+  --primary: #F1E2C6;   /* susu text */
+  --secondary: #BFA586; /* kopi-c muted */
+  --tertiary: #3A3150;
+  --content: #F1E2C6;
+  --code-bg: #2C3566;
+  --border: #3A3150;
+  --code-block-bg: #1E2547;
+  /* Pink replaces the amber accent in dark mode so there's one accent, not two. */
+  --site-accent: #F2A7B5;
+}
+
+/* Scoped to dark: this pink is ~1.7:1 on the light theme's background. */
+:root[data-theme="dark"] a {
+  color: #F2A7B5;
+}
+
+/* Header stays cream; the pink link colour would otherwise apply to the logo and nav. */
+:root[data-theme="dark"] .logo a,
+:root[data-theme="dark"] #menu a {
+  color: var(--primary);
+}
+
+/* Code palette and tag pills (dark only). Backgrounds stay on the navy. */
+:root[data-theme="dark"] {
+  --kopi-bg: #252D58;
+  --kopi-surface: #2C3566;
+  --kopi-text: #EEDFC4;
+  --kopi-muted: #BFA083;
+  --kopi-green: #8CCB9B;
+  --kopi-pink: #F0A0B0;
+  --kopi-blue-pea: #9DB0F0;
+  --kopi-border: #3B4580;
+  --code-bg: var(--kopi-surface);
+}
+
+/*
+ * Contrast via contrast-color() + color-mix(), after una.im/advanced-contrast-color:
+ * contrast-color() picks black or white for a background, then a share of a palette
+ * colour is mixed back in so text is tinted but still contrasts. Each rule declares a
+ * plain colour first as the fallback for browsers without contrast-color().
+ */
+:root[data-theme="dark"] .post-tags a {
+  --pill-bg: var(--kopi-green);
+  border: none;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--theme);
+  /* Light pills: 25% tint of the pill's own hue. */
+  color: color-mix(in oklch, var(--pill-bg) 25%, contrast-color(var(--pill-bg)));
+}
+
+:root[data-theme="dark"] .post-tags li:nth-child(3n + 2) a {
+  --pill-bg: var(--kopi-blue-pea);
+}
+
+:root[data-theme="dark"] .post-tags li:nth-child(3n) a {
+  --pill-bg: var(--kopi-pink);
+}
+
+:root[data-theme="dark"] .post-content code {
+  color: var(--kopi-text);
+  /* Dark surface: 30% tint of the background itself. */
+  color: color-mix(in oklch, var(--code-bg) 30%, contrast-color(var(--code-bg)));
+}
+
+/* Code highlighting is inline Monokai (markup.highlight noClasses), so remap its colours by value. */
+:root[data-theme="dark"] .post-content .highlight,
+:root[data-theme="dark"] .post-content pre {
+  border-radius: var(--radius);
+}
+
+:root[data-theme="dark"] .post-content .highlight pre,
+:root[data-theme="dark"] .post-content pre code {
+  background: var(--kopi-bg) !important;
+  color: var(--kopi-text) !important;
+  color: color-mix(in oklch, var(--kopi-bg) 30%, contrast-color(var(--kopi-bg))) !important;
+}
+
+:root[data-theme="dark"] .post-content .highlight pre {
+  border: 1px solid var(--kopi-border);
+}
+
+/* Syntax colours keep their hue but are pulled toward the block's contrast colour. */
+:root[data-theme="dark"] .highlight span[style*="#66d9ef"],
+:root[data-theme="dark"] .highlight span[style*="#f92672"] {
+  color: var(--kopi-pink) !important;
+  color: color-mix(in oklch, var(--kopi-pink) 80%, contrast-color(var(--kopi-bg))) !important;
+}
+
+:root[data-theme="dark"] .highlight span[style*="#a6e22e"] {
+  color: var(--kopi-green) !important;
+  color: color-mix(in oklch, var(--kopi-green) 80%, contrast-color(var(--kopi-bg))) !important;
+}
+
+:root[data-theme="dark"] .highlight span[style*="#e6db74"],
+:root[data-theme="dark"] .highlight span[style*="#ae81ff"] {
+  color: var(--kopi-blue-pea) !important;
+  color: color-mix(in oklch, var(--kopi-blue-pea) 80%, contrast-color(var(--kopi-bg))) !important;
+}
+
+:root[data-theme="dark"] .highlight span[style*="#75715e"],
+:root[data-theme="dark"] .highlight span[style*="#959077"] {
+  color: var(--kopi-muted) !important;
+  color: color-mix(in oklch, var(--kopi-muted) 85%, contrast-color(var(--kopi-bg))) !important;
+}
+
+/*
+ * Nav: logo left, menu and theme toggle together at the far right. The toggle lives inside
+ * .logo in PaperMod's markup, so .logo is flattened with display: contents and each piece
+ * is placed on a grid.
+ */
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+}
+
+.nav .logo {
+  display: contents;
+}
+
+.nav .logo > a {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  margin-inline-end: 12px; /* minimum space before the menu on narrow screens */
+  white-space: nowrap;
+  margin-inline-start: var(--gap);
+}
+
+.nav #menu {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+}
+
+/* Same spacing as between menu items, so it reads as one more item. */
+.nav .logo-switches {
+  grid-column: 3;
+  grid-row: 1;
+  margin: 0 var(--gap);
+}
+
+.nav button#theme-toggle {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Phones: keep everything on one row by tightening type and spacing. */
+@media (max-width: 600px) {
+  .nav .logo > a {
+    margin-inline-start: 16px;
+    font-size: 20px;
+  }
+
+  .nav #menu li + li {
+    margin-inline-start: 14px;
+  }
+
+  .nav .logo-switches {
+    margin: 0 16px 0 14px;
+  }
+}
+
+/* Smallest phones (320px): step type down once more so the row still fits. */
+@media (max-width: 360px) {
+  .nav .logo > a {
+    margin-inline-start: 12px;
+    font-size: 18px;
+  }
+
+  .nav #menu a {
+    font-size: 15px;
+  }
+
+  /* PaperMod scrolls the menu on overflow; at this size it's 2px over, so let it show. */
+  .nav #menu {
+    overflow: visible;
+  }
+
+  .nav #menu li + li {
+    margin-inline-start: 10px;
+  }
+
+  .nav .logo-switches {
+    margin: 0 12px 0 10px;
+  }
+}

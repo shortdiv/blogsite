@@ -1,7 +1,7 @@
 ---
 title: "30/60/90 into the new job"
 description: ""
-tags: [personal]
+tags: [personal, career]
 categories: []
 date: 2025-09-02T10:45:06-04:00
 draft: false

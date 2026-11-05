@@ -1,7 +1,7 @@
 ---
 title: "The Journey to Otel Collector"
 description: ""
-tags: [advent]
+tags: [advent, observability, infrastructure]
 categories: []
 date: 2025-12-19T23:25:03-05:00
 draft: false
