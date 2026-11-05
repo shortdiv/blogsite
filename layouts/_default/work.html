@@ -7,14 +7,16 @@
     {{- with .Params.cta }}<a class="work-hero__cta" href="{{ .url | relURL }}">{{ .label }}</a>{{- end }}
   </header>
 
-  {{- with .Params.clients }}
+  {{- /* Case studies are the pages in content/work/, one per client. */}}
+  {{- with .RegularPages.ByWeight }}
   <div class="work-grid">
     {{- range . }}
-    <section class="work-tile" id="{{ .name | urlize }}">
-      {{- if .icon }}<img class="work-tile__icon" src="{{ .icon | relURL }}" alt="{{ .iconAlt }}" width="40" height="40" loading="lazy">{{- end }}
-      {{- with .area }}<p class="work-tile__area">{{ . }}</p>{{- end }}
-      <h2>{{ .name }}</h2>
-      {{- with .summary }}<p class="work-tile__summary">{{ . }}</p>{{- end }}
+    <section class="work-tile" id="{{ .File.ContentBaseName }}">
+      {{- if .Params.icon }}<img class="work-tile__icon" src="{{ .Params.icon | relURL }}" alt="{{ .Params.iconAlt }}" width="40" height="40" loading="lazy">{{- end }}
+      {{- with .Params.area }}<p class="work-tile__area" data-area="{{ . | urlize }}">{{ . }}</p>{{- end }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{- with .Params.summary }}<p class="work-tile__summary">{{ . }}</p>{{- end }}
+      <p class="work-tile__more" aria-hidden="true">Case study →</p>
     </section>
     {{- end }}
   </div>
@@ -97,11 +99,12 @@
     margin-top: calc(var(--gap) * 2.5);
   }
 
-  /* Each tile spans four shared rows (icon, area, name, summary), so summaries line up
+  /* Each tile spans five shared rows (icon, area, name, summary, link), so summaries line up
      across tiles even when a name wraps. */
   .work-tile {
+    position: relative;
     display: grid;
-    grid-row: span 4;
+    grid-row: span 5;
     grid-template-rows: subgrid;
     align-content: start;
     padding: 24px;
@@ -125,6 +128,29 @@
     text-transform: uppercase;
   }
 
+  /* The name link covers the whole tile, so the card is one click target. */
+  .work-page .work-tile h2 a {
+    color: inherit;
+  }
+
+  .work-tile h2 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+  }
+
+  .work-tile:hover {
+    border-color: var(--secondary);
+  }
+
+  .work-tile__more {
+    margin: 16px 0 0;
+    color: var(--site-accent);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
   .work-tile h2 {
     margin: 8px 0 0;
     font-size: 26px;
@@ -143,8 +169,7 @@
   }
 
   .work-past .work-section-label {
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
   }
 
   .work-past ul {

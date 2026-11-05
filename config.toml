@@ -42,3 +42,7 @@ hideAuthor = true
   url = "/about/"
   weight = 3
 
+
+# Lets markdown blocks take a class, e.g. `{.help-list}` after a list (used on /hire).
+[markup.goldmark.parser.attribute]
+  block = true

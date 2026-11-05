@@ -1,0 +1,214 @@
+{{- define "main" }}
+
+<article class="case">
+  <nav class="case__crumbs" aria-label="Breadcrumb">
+    <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+    <span aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <header class="case__header">
+    <p class="case__eyebrow">
+      {{- if .Params.icon }}<img src="{{ .Params.icon | relURL }}" alt="{{ .Params.iconAlt }}" width="20" height="20">{{- end }}
+      Case study
+    </p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p class="case__lede">{{ . }}</p>{{- end }}
+  </header>
+
+  {{- /* Details strip; each cell is hidden while its field is empty. */}}
+  {{- if or .Params.area .Params.engagement .Params.stack }}
+  <dl class="case__meta">
+    {{- with .Params.area }}<div><dt>Area</dt><dd data-area="{{ . | urlize }}">{{ . }}</dd></div>{{- end }}
+    {{- with .Params.engagement }}<div><dt>Engagement</dt><dd>{{ . }}</dd></div>{{- end }}
+    {{- with .Params.stack }}<div><dt>Stack</dt><dd>{{ delimit . ", " }}</dd></div>{{- end }}
+    {{- with .Params.website }}<div><dt>Website</dt><dd><a class="case__site" href="{{ . }}" target="_blank" rel="noopener">{{ strings.TrimPrefix "www." (urls.Parse .).Host }} ↗</a></dd></div>{{- end }}
+  </dl>
+  {{- end }}
+
+  <div class="case__body post-content">
+    {{ .Content }}
+  </div>
+
+  {{- with .Params.result }}
+  <section class="case__outcome">
+    <h2>Outcome</h2>
+    <p>{{ . | markdownify }}</p>
+  </section>
+  {{- end }}
+
+  {{- with .Params.testimonial }}
+  {{- with .quote }}
+  <blockquote class="case__quote">
+    <p>{{ . | markdownify }}</p>
+    {{- with $.Params.testimonial.author }}<cite>{{ . }}</cite>{{- end }}
+  </blockquote>
+  {{- end }}
+  {{- end }}
+
+  {{- with .Params.related }}
+  <section class="case__related">
+    <h2 class="case__label">Related writing</h2>
+    <ul>
+      {{- range . }}
+      {{- with site.GetPage . }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{- end }}
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- with .Parent.Params.closing }}
+  <p class="case__outro">{{ . | markdownify }}</p>
+  {{- end }}
+</article>
+
+<style>
+  /* PaperMod only marks exact URL matches active; keep "Work" marked on its child pages. */
+  #menu a[href$="/work/"] span {
+    font-weight: 500;
+    border-bottom: 2px solid currentColor;
+  }
+
+  .case {
+    max-width: var(--main-width);
+    margin: 0 auto;
+    padding: var(--gap) 0 calc(var(--gap) * 3);
+  }
+
+  .case__crumbs {
+    display: flex;
+    gap: 8px;
+    color: var(--secondary);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .case__eyebrow,
+  .case__meta dt,
+  .case__label {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case__header {
+    margin-top: calc(var(--gap) * 2);
+  }
+
+  .case__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .case__eyebrow img {
+    border-radius: 5px;
+  }
+
+  .case__header h1 {
+    margin: 12px 0 var(--content-gap);
+    font-size: 56px;
+    line-height: 1.05;
+  }
+
+  .case__lede {
+    margin: 0;
+    color: var(--secondary);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  /* Details strip: label over value. One rule above it to close off the intro. */
+  .case__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px var(--gap);
+    margin: calc(var(--gap) * 1.5) 0 0;
+    padding-top: calc(var(--gap) * 1.5);
+    border-top: 1px solid var(--border);
+  }
+
+  .case .case__site {
+    color: var(--site-accent);
+    font-weight: 500;
+  }
+
+  .case__meta dd {
+    margin: 6px 0 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .case__body {
+    margin-top: calc(var(--gap) * 1.5);
+  }
+
+  .case__body h2,
+  .case__outcome h2 {
+    margin: calc(var(--gap) * 2) 0 16px;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .case__outcome p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .case__quote {
+    margin: calc(var(--gap) * 2) 0 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--site-accent);
+    font-size: 19px;
+  }
+
+  .case__quote p {
+    margin: 0 0 8px;
+  }
+
+  .case__quote cite {
+    color: var(--secondary);
+    font-size: 15px;
+    font-style: normal;
+  }
+
+  .case__related {
+    margin-top: calc(var(--gap) * 2.5);
+  }
+
+  .case__label {
+    margin: 0 0 10px;
+  }
+
+  .case__related ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .case__related a {
+    color: var(--site-accent);
+    font-weight: 500;
+  }
+
+  .case__outro {
+    margin: calc(var(--gap) * 2.5) 0 0;
+    font-size: 19px;
+  }
+
+  @media (max-width: 768px) {
+    .case__header h1 {
+      font-size: 40px;
+    }
+
+    .case__meta {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+{{- end }}{{/* end main */}}

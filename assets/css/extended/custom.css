@@ -119,6 +119,39 @@
   --pill-bg: var(--kopi-pink);
 }
 
+/*
+ * Work areas are colour coded in dark mode only, one colour per topic so a topic reads the
+ * same everywhere. None of these pass as text on the light susu background, so light stays plain.
+ */
+:root[data-theme="dark"] [data-area="observability"] {
+  color: var(--kopi-blue-pea);
+}
+
+:root[data-theme="dark"] [data-area="go-to-market"] {
+  color: var(--kopi-green);
+}
+
+:root[data-theme="dark"] [data-area="ai-o11y-tools"] {
+  color: var(--kopi-pink);
+}
+
+/* /hire "What I help with": bold lead-ins pick up the accent; in dark, each uses its work-area colour (list order matches). */
+.post-content .help-list strong {
+  color: var(--site-accent);
+}
+
+:root[data-theme="dark"] .post-content .help-list li:nth-child(1) strong {
+  color: var(--kopi-green);     /* go-to-market */
+}
+
+:root[data-theme="dark"] .post-content .help-list li:nth-child(2) strong {
+  color: var(--kopi-blue-pea);  /* observability */
+}
+
+:root[data-theme="dark"] .post-content .help-list li:nth-child(3) strong {
+  color: var(--kopi-pink);      /* AI o11y tools */
+}
+
 :root[data-theme="dark"] .post-content code {
   color: var(--kopi-text);
   /* Dark surface: 30% tint of the background itself. */

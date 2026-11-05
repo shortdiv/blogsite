@@ -1,12 +1,10 @@
 ---
 title: "Work with me"
-description: "Fractional help for seed to Series A teams."
+description: "Fractional help for seed to early stage teams."
 hideMeta: true
 disableShare: true
 ShowToc: false
 ---
-
-I help early-stage teams with the work between engineering and growth.
 
 ## Who it's for
 
@@ -14,9 +12,10 @@ Seed to Series A founders and VC portfolio teams, especially in AI infrastructur
 
 ## What I help with
 
-- **Go-to-market and growth planning.** Turning revenue targets into a plan you can actually run: pipeline, channels, and content. [See the YC case study →](/work/#stealth-yc)
-- **Observability and team enablement.** Getting your team visibility into what's breaking, and finding and fixing it before customers do. [See LM Studio →](/work/#lm-studio)
-- **Developer tools for AI.** Building the CLIs and end-to-end flows engineers actually use. [See Tero →](/work/#tero)
+- **Go-to-market and growth planning.** Turning revenue targets into a plan you can actually run: pipeline, channels, and content. [See the YC case study →](/work/stealth-yc/)
+- **Observability and team enablement.** Getting your team visibility into what's breaking, and finding and fixing it before customers do. [See LM Studio →](/work/lm-studio/)
+- **AI o11y tools.** Building the CLIs and end-to-end flows engineers actually use. [See Tero →](/work/tero/)
+{.help-list}
 
 ## How engagements work
 
