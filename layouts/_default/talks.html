@@ -35,8 +35,9 @@
     <div class="talks-year">
       <h3 class="talks-year__label">{{ $year }}</h3>
       <ul>
-        {{- range where $talks "year" $year }}
-        {{- template "talk" . }}
+        {{- /* A plain loop: on Hugo 0.152.0 (Netlify) `where` on this built-up slice returns nothing. */}}
+        {{- range $talks }}
+        {{- if eq .year $year }}{{ template "talk" . }}{{ end }}
         {{- end }}
       </ul>
     </div>
