@@ -1,0 +1,205 @@
+{{- define "main" }}
+
+<article class="talks-page">
+  {{- /* The sections carry the visible headings; the page title stays for screen readers. */}}
+  <h1 class="visually-hidden">{{ .Title }}</h1>
+
+  {{- /* Only entries with a title are shown; placeholders stay hidden until filled in. */}}
+  {{- $all := where .Params.talks "title" "!=" "" }}
+  {{- /* Talks with a date still ahead are listed under Upcoming, the rest by year. */}}
+  {{- $upcoming := slice }}
+  {{- $talks := slice }}
+  {{- range $all }}
+  {{- if and .date ((time .date).After now) }}{{ $upcoming = $upcoming | append . }}{{ else }}{{ $talks = $talks | append . }}{{ end }}
+  {{- end }}
+  {{- if $all }}
+  <section class="talks-section">
+    <header class="talks-section__head">
+      <h2>Talks</h2>
+      {{- with $.Params.slides }}<a class="talks-section__more" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{- end }}
+    </header>
+    {{- with $upcoming }}
+    <div class="talks-year">
+      <h3 class="talks-year__label">Upcoming</h3>
+      <ul>
+        {{- range . }}
+        {{- template "talk" . }}
+        {{- end }}
+      </ul>
+    </div>
+    {{- end }}
+    {{- $years := slice }}
+    {{- range $talks }}{{ $years = $years | append .year }}{{ end }}
+    {{- range $years | uniq }}
+    {{- $year := . }}
+    <div class="talks-year">
+      <h3 class="talks-year__label">{{ $year }}</h3>
+      <ul>
+        {{- range where $talks "year" $year }}
+        {{- template "talk" . }}
+        {{- end }}
+      </ul>
+    </div>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  {{- with .Params.podcasts }}
+  <section class="talks-section">
+    <header class="talks-section__head">
+      <h2>Podcasts</h2>
+    </header>
+    <ul>
+      {{- range . }}
+      {{- template "talk" . }}
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  <p class="talks-outro">Want me to speak at your event? Email me at <strong>hello[at]shortdiv[dot]com</strong>.</p>
+</article>
+
+<style>
+  /* Same reading width as Writing and Work. */
+  .talks-page {
+    max-width: var(--main-width);
+    margin: 0 auto;
+    padding: var(--gap) 0 calc(var(--gap) * 3);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Section breaks are carried by size and space, not rules. */
+  .talks-section {
+    margin-top: calc(var(--gap) * 3);
+  }
+
+  .talks-section:first-of-type {
+    margin-top: 0;
+  }
+
+  .talks-section__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px var(--gap);
+  }
+
+  .talks-section__head h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .talks-page a.talks-section__more {
+    color: var(--site-accent);
+    font-weight: 500;
+  }
+
+  .talks-year {
+    margin-top: var(--gap);
+  }
+
+  /* One rule between years, as asked; talks within a year sit close together. */
+  .talks-year + .talks-year {
+    padding-top: var(--gap);
+    border-top: 1px solid var(--border);
+  }
+
+  .talks-year__label {
+    margin: 0;
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .talks-page ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .talk {
+    padding-top: 12px;
+  }
+
+  /* Erode (set site-wide for titles) against the sans section headings. */
+  .talk__title {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  /* Event in the accent, like the role on /work, so it reads apart from the title. */
+  .talk__event {
+    margin: 2px 0 0;
+    color: var(--site-accent);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .talk__desc {
+    margin: 4px 0 0;
+    color: var(--content);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .talk__links {
+    font-size: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin-top: 4px !important;
+  }
+
+  /* Not the accent (that's the event); same link treatment as /work's past roles. */
+  .talk__links a {
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+  }
+
+  :root[data-theme="dark"] .talk__links a {
+    color: var(--kopi-green);
+    text-decoration-color: color-mix(in oklch, var(--kopi-green) 40%, transparent);
+  }
+
+  .talks-outro {
+    margin: calc(var(--gap) * 3) 0 0;
+    color: var(--content);
+    font-size: 19px;
+  }
+
+</style>
+
+{{- end }}{{/* end main */}}
+
+{{- define "talk" }}
+      <li class="talk">
+        <h4 class="talk__title">{{ .title }}</h4>
+        {{- if .event }}<p class="talk__event">{{ .event }}{{ with .location }}, {{ . }}{{ end }}{{ if and .date ((time .date).After now) }} · {{ (time .date).Format "January 2" }}{{ end }}</p>{{- end }}
+        {{- with .description }}<p class="talk__desc">{{ . | markdownify }}</p>{{- end }}
+        {{- with .links }}
+        <ul class="talk__links">
+          {{- range . }}
+          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} ↗</a></li>
+          {{- end }}
+        </ul>
+        {{- end }}
+      </li>
+{{- end }}

@@ -7,6 +7,8 @@ image: "/images/divspeaking.jpg"
 imageAlt: "Divya speaking on stage at Øredev 2023"
 greeting: ["How", "Goes?"]
 intro: "My name is Divya."
+# Under the intro: nickname in the text colour, subtitle in the accent, same size.
+nickname: "Friends call me Div."
 subtitle: "I'm glad you're here."
 ---
 

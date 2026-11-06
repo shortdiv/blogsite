@@ -21,7 +21,12 @@
 
     <section class="bio__intro">
       {{- with .Params.intro }}<h1>{{ . }}</h1>{{- end }}
-      {{- with .Params.subtitle }}<p class="bio__subtitle">{{ . }}</p>{{- end }}
+      {{- if or .Params.nickname .Params.subtitle }}
+      <p class="bio__subtitle">
+        {{- with .Params.nickname }}<span class="bio__nickname">{{ . }}</span>{{- end }}
+        {{- .Params.subtitle -}}
+      </p>
+      {{- end }}
     </section>
 
     <section class="bio__text post-content">
@@ -116,15 +121,25 @@
     margin: 0;
   }
 
+  /* Erode, the site's title serif; "How Goes?" above keeps Libre Bodoni. */
   .bio__intro h1 {
     font: inherit;
+    font-family: "Erode", serif;
   }
 
   .bio__intro .bio__subtitle {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     color: var(--bio-orange);
     font-size: 1.4rem;
     font-weight: 400;
+  }
+
+  /* Its own line, kept closer to the accent line than the pair is to the name above. */
+  .bio__nickname {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--primary);
+    font-style: italic;
   }
 
   .bio__text {

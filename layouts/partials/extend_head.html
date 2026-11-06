@@ -1,5 +1,36 @@
+{{- /* Self-hosted from static/fonts (fetched at build by scripts/fetch-fonts.sh).
+     Erode is the site's serif for titles: posts, case studies and talks. */}}
+<link rel="preload" href="{{ "fonts/Erode-Variable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 {{- if eq .Layout "bio" }}
+{{- /* The About page's "How Goes?" heading keeps Libre Bodoni italic. */}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@1,400&display=swap">
 {{- end }}
+<style>
+  @font-face {
+    font-family: "Erode";
+    src: url("{{ "fonts/Erode-Variable.woff2" | relURL }}") format("woff2");
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Erode";
+    src: url("{{ "fonts/Erode-VariableItalic.woff2" | relURL }}") format("woff2");
+    font-weight: 300 700;
+    font-style: italic;
+    font-display: swap;
+  }
+{{- if eq .Layout "scrolly" }}
+
+  @font-face {
+    font-family: "Satoshi";
+    src: url("{{ "fonts/Satoshi-Variable.woff2" | relURL }}") format("woff2");
+    font-weight: 300 900;
+    font-style: normal;
+    font-display: swap;
+  }
+{{- end }}
+</style>

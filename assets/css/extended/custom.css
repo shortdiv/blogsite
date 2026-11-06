@@ -29,6 +29,18 @@
   }
 }
 
+/*
+ * Erode (self-hosted, see extend_head.html) names things: post, case-study and talk titles.
+ * Navigation, section headings, labels and body text stay in the sans.
+ */
+.post-entry .entry-header h2,
+.post-title,
+.work-tile h2,
+.case__header h1,
+.talk__title {
+  font-family: "Erode", serif;
+}
+
 /* PaperMod gives .first-entry a 320px min-height, which leaves a gap above the posts. */
 .first-entry.home-info {
   min-height: auto;
@@ -248,22 +260,6 @@
 @media (max-width: 600px) {
   .nav .logo > a {
     margin-inline-start: 16px;
-    font-size: 20px;
-  }
-
-  .nav #menu li + li {
-    margin-inline-start: 14px;
-  }
-
-  .nav .logo-switches {
-    margin: 0 16px 0 14px;
-  }
-}
-
-/* Smallest phones (320px): step type down once more so the row still fits. */
-@media (max-width: 360px) {
-  .nav .logo > a {
-    margin-inline-start: 12px;
     font-size: 18px;
   }
 
@@ -271,16 +267,36 @@
     font-size: 15px;
   }
 
-  /* PaperMod scrolls the menu on overflow; at this size it's 2px over, so let it show. */
-  .nav #menu {
-    overflow: visible;
-  }
-
   .nav #menu li + li {
     margin-inline-start: 10px;
   }
 
   .nav .logo-switches {
-    margin: 0 12px 0 10px;
+    margin: 0 16px 0 10px;
+  }
+}
+
+/* Smallest phones (320px): step type down once more so the row still fits. */
+@media (max-width: 360px) {
+  .nav .logo > a {
+    margin-inline-start: 10px;
+    font-size: 15px;
+  }
+
+  .nav #menu a {
+    font-size: 14px;
+  }
+
+  /* PaperMod scrolls the menu on overflow; let it show instead of clipping a pixel or two. */
+  .nav #menu {
+    overflow: visible;
+  }
+
+  .nav #menu li + li {
+    margin-inline-start: 8px;
+  }
+
+  .nav .logo-switches {
+    margin: 0 10px 0 8px;
   }
 }
